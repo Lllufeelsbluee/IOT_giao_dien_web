@@ -1,0 +1,259 @@
+/* Reset CSS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Thiết lập cho body */
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif ,serif;
+    font-size: 16px;
+    width: 100%;
+    margin: auto auto;
+    background-color: #50534c;
+}
+
+/* Header */
+#header {
+    width: 100%;
+    height: 100px;
+    background-color: #3f2002;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+.header-content h1 {
+    font-size: 2.5rem;
+    margin-right: 25px;
+    
+    font-weight: 600;
+}
+
+.header-content h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #d3d3d3;
+    font-style: oblique;
+}
+
+/* Logo */
+#logo {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #333;
+    color: white;
+    padding: 2%;
+    position: fixed;
+    top: 100px;
+}
+
+.sidebar h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: #f1af5fb2;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+
+/* Circle Container */
+.circle-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+    justify-content: center; /* Căn giữa container */
+    align-items: center; /* Căn giữa dọc */
+    margin-top: 15px;
+    margin-left: auto; /* Thêm margin auto để căn giữa */
+    margin-right: 80px;
+   
+    width: fit-content; /* Giữ kích thước khung gọn */
+    border: 10px solid #333;
+    background-color: rgb(230, 220, 140);
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#clock-border {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:absolute ; /* Sử dụng absolute để di chuyển */
+    border: 5px solid #0a2167;
+    background-color: rgb(65, 116, 123);
+    border-radius: 30px;
+    width: 600px; /* Chiều rộng của border */
+    height: 320px; /* Chiều cao của border */
+    right: 95px; /* Căn phải của border lớn, điều chỉnh khoảng cách */
+    bottom: 100px; /* Khoảng cách từ trên xuống */
+    padding: 10px;
+    overflow: visible; /* Đảm bảo nội dung không tràn ra ngoài */
+}
+#date {
+    position: absolute;
+    bottom:  -3px; /* Khoảng cách từ cạnh dưới */
+    right: 30px; /* Khoảng cách từ cạnh trái */
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: bolder;
+}
+
+#clock {
+    position: absolute;
+    bottom: 18px; /* Khoảng cách từ cạnh dưới */
+    right: 45px; /* Khoảng cách từ cạnh phải */
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+#thingspeak-chart {
+    width: 50%;  /* Chiếm 95% chiều rộng của khung */
+    height: 250px; /* Chiều cao của biểu đồ */
+    border: 3px double;  /* Xóa border mặc định của iframe */
+    margin-bottom: 30px; /* Khoảng cách giữa đồng hồ và biểu đồ */
+    border-radius: 30px;
+}  
+/* Circle Item */
+.circle-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Căn dọc các phần tử */
+    align-items: center; /* Căn giữa các phần tử bên trong */
+    width: 150px;
+    margin-bottom: 10px; /* Thêm khoảng cách giữa các item */
+    margin-top: 10px;
+    margin-right: 20px;
+}
+    
+    .circle-item .detail-box {
+        margin-top: 10px; /* Thêm khoảng cách giữa khung chi tiết và hình */
+        
+    }
+    
+
+    /* Circle Image */
+.circle-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 70%;
+    object-fit: cover;
+    border: 5px solid #472608;
+    margin-bottom: 10px; /* Thêm khoảng cách giữa hình và tên */
+    transition: transform 0.3s;
+}
+
+    .circle-item img:hover {
+        transform: scale(1.3);
+    }
+
+    /* Text under Circle */
+.circle-item p {
+    margin-top: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Style cho nút ON/OFF */
+.btn-on, .btn-off {
+    display: inline-block;
+    padding: 10px 20px; 
+    margin: 10px 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: rgb(20, 18, 18);
+    transition: background-color 0.3s ease;
+}
+
+.btn-on  {
+    background-color: #4CAF50;
+}
+
+.btn-off {
+    background-color: #F44336;
+}
+
+.btn-on:hover {
+    background-color: #45a049;
+}
+
+.btn-off:hover {
+    background-color: #e53935;
+}
+/* Detail Box */
+
+.detail-box {
+    width: 100px; /* Cùng kích thước với hình ảnh */
+    height: 50px;
+    margin-bottom: 30px; /* Khoảng cách từ chữ xuống khung No Data */
+    margin-right: 30px;
+    background-color: #d58a8a;
+    border: 5px solid sandybrown;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+/* Footer */
+#footer {
+    background-color: #4c2c0f;
+    color: white;
+    padding: 10px 20px;
+    text-align: left;
+    margin-top: 93px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#footer ul li {
+    font-size: 1rem;
+    margin: 10px 0;
+}

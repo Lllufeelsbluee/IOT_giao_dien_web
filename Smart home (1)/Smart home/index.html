@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Link đến file CSS -->
+   
+</head>
+
+<body>
+    <div id="header">
+        <div class="header-content">
+            <img src="logo.png" id="logo" alt="Logo">
+            <h1>Smart Home</h1>
+            <h2>Make your own house more convenient!</h2>
+            
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h2>Thông tin thành viên</h2>
+        <ul>
+            <li><a href="#">Lâm Đức Quan</a></li>  
+            <li><a href="#">Nguyễn Vĩnh Hưng</a></li>  
+            <li><a href="#">Phan Minh Quân</a></li>    
+        </ul>
+    </div>
+    
+    <div class="circle-container">
+        <!-- Humidity -->
+        <div class="circle-item">
+            
+            <img src="humidity.png" alt="Humidity">
+            <p>Humidity</p>
+            
+        </div>
+        <!-- Khung hiển thị bên phải của Humidity -->
+        <div class="detail-box" id="humidity-box"><p id="humidity-value"></p></div>
+
+        <!-- Temperature -->
+        <div class="circle-item">
+            <img src="temperature.png" alt="Temperature">
+            <p>Temperature</p>
+           
+        </div>
+        <!-- Khung hiển thị bên phải của Temperature -->
+        <div class="detail-box" id="temperature-box"><p id="temperature-value"></p></div>
+
+        <!-- Distance -->
+        <div class="circle-item">
+            <img src="distance.png" alt="Distance">
+            <p>Distance</p>
+             
+        </div>
+        <!-- Khung hiển thị bên phải của Distance -->
+        <div class="detail-box" id="distance-box"><p id="distance-value"></p></div>
+
+            <!-- Light Control -->
+        <div class="circle-item">
+            <img id="light-img" src="light_off.png" alt="Light">
+            <p>Light</p>
+            <button class="btn-on" id="btn1">ON</button>
+            <button class="btn-off" id="btn2">OFF</button>
+        </div>
+
+        <!-- Fan Control -->
+        <div class="circle-item">
+            <img id="fan-img" src="Air_off.png" alt="AC">
+            <p>AC</p>
+            <button class="btn-on" id="btn3">ON</button>
+            <button class="btn-off" id="btn4">OFF</button>
+        </div>
+
+        <!-- Door Control -->
+        <div class="circle-item">
+            <img id="door-img" src="door.png" alt="Door">
+            <p>Door</p>
+            <button class="btn-on" id="btn5">Open</button>
+            <button class="btn-off" id="btn6">Close</button>
+        </div>
+
+        <div id="clock-border"></div>
+
+            <div class="border-container" id="clock-border"> 
+                <div id="date"></div>
+                
+                <div id="clock" class="clock"></div> <!-- Đồng hồ -->
+                <!-- Đồ thị Thingspeak Humidity -->
+                
+                <iframe id="thingspeak-chart" src="https://thingspeak.com/channels/2567415/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+               <iframe id="thingspeak-chart" src="https://thingspeak.com/channels/2567415/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe> 
+               
+            </div>   
+        
+    
+        
+      
+            
+        </div>
+
+    </div>
+    
+    <div id="footer">
+        <ul>
+            <li>For more info, please contact: 0123456789</li>
+        </ul>
+    </div>
+    <script src="image/"></script>
+    <script src="functions.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-analytics.js"></script>
+    
+
+    <script>
+            // Firebase configuration
+            var firebaseConfig = {
+            apiKey: "AIzaSyAFhLAEW_5t5m1bV_G0muekV1nXjodwXSc",
+            authDomain: "lab3-bt2.firebaseapp.com",
+            databaseURL: "https://lab3-bt2-default-rtdb.firebaseio.com",
+            projectId: "lab3-bt2",
+            storageBucket: "lab3-bt2.appspot.com",
+            messagingSenderId: "825383961006",
+            appId: "1:825383961006:web:17568af1393c349065483f",
+            measurementId: "G-J052HB0J1L"
+        };
+
+        // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+
+        // Get references to the elements that display the values
+        var humidityElement = document.getElementById('humidity-value');
+        var temperatureElement = document.getElementById('temperature-value');
+        var distanceElement = document.getElementById('distance-value');
+
+        // Firebase database references for each value
+        var humidityRef = firebase.database().ref('sensor_data/humidity');
+        var temperatureRef = firebase.database().ref('sensor_data/temperature');
+        var distanceRef = firebase.database().ref('sensor_data/distance');
+
+        humidityRef.on('value', function(snapshot) {
+        document.getElementById('humidity-value').innerText = snapshot.val() + '%';
+    });
+
+    temperatureRef.on('value', function(snapshot) {
+        document.getElementById('temperature-value').innerText = snapshot.val() + '°C';
+    });
+
+    distanceRef.on('value', function(snapshot) {
+        document.getElementById('distance-value').innerText = snapshot.val() + 'cm';
+    });
+    </script>
+</body>
+</html>
